@@ -61,4 +61,18 @@ const usePublishingStore = defineStore('publishing', () => {
         });
     }
 
-})
+    return {
+        categories,
+        errors,
+        categoriesLoaded,
+        categoriesCount,
+        fetchCategories,
+        getCategoryById,
+        addCategory,
+        updateCategory,
+        deleteCategory,
+    }
+
+});
+
+export default usePublishingStore;
