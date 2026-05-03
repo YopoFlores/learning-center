@@ -23,11 +23,11 @@ const useIamStore = defineStore('iam', () => {
     const usersLoaded = ref(false);
     /** @type {import('vue').Ref<boolean>} Flag indicating if a user is signed in. */
     const isSignedIn = ref(false);
-    /** @type {import('vue').Ref<string|null>} The currently signed-in user entity. */
+    /** @type {import('vue').Ref<string|null>} Username of the currently authenticated user, or null when signed out. */
     const currentUsername = ref(null);
-    /** @type {import('vue').Ref<number|null>} The currently signed-in user entity. */
+    /** @type {import('vue').Ref<number>} Identifier of the currently authenticated user, or 0 when signed out. */
     const currentUserId = ref(0);
-    /** @type {import('vue').ComputedRef<string|null>} The current authentication token. */
+    /** @type {import('vue').ComputedRef<string|null>} Bearer token for the active session, or null when signed out. */
     const currentToken = computed(() => isSignedIn.value ? localStorage.getItem('token') : null);
 
     /**

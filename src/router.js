@@ -7,6 +7,7 @@ import publishingRoutes from "./publishing/presentation/publishing-routes.js";
 // Define lazy-loaded components for routes
 const about = () => import('./shared/presentation/views/about.vue');
 const pageNotFound = () => import('./shared/presentation/views/page-not-found.vue');
+
 /*
 // Routes version when IAM is implemented
 const routes = [
@@ -19,7 +20,12 @@ const routes = [
 ];
 */
 
-// Routes version when IAM is not implemented
+/**
+ * Application route definitions (IAM disabled).
+ * When IAM is enabled, add the `/iam` child route and import {@link iamRoutes}.
+ *
+ * @type {import('vue-router').RouteRecordRaw[]}
+ */
 const routes = [
     { path: '/home',            name: 'home',       component: Home,        meta: { title: 'Home' } },
     { path: '/about',           name: 'about',      component: about,       meta: { title: 'About' } },
@@ -28,6 +34,12 @@ const routes = [
     { path: '/:pathMatch(.*)*', name: 'not-found', component: pageNotFound, meta: { title: 'Page Not Found' } }
 ];
 
+/**
+ * Vue Router instance for the application.
+ * Uses HTML5 history mode with the base URL provided by Vite.
+ *
+ * @type {import('vue-router').Router}
+ */
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: routes,
